@@ -1,0 +1,84 @@
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+/* Dirección visual B: "Cazuela de barro".
+   Fotografía protagonista, fondos barro y crema, rojo chile solo como acento. */
+@theme {
+  --font-titulo: 'Fraunces Variable', 'Georgia', serif;
+  --font-texto: 'Inter Variable', system-ui, sans-serif;
+
+  --color-barro-950: #1c0f0c;
+  --color-barro-900: #2a1714;
+  --color-barro-800: #3b2420;
+  --color-barro-700: #52302a;
+  --color-terracota-700: #7f3220;
+  --color-terracota-600: #a6462a;
+  --color-terracota-500: #c2603f;
+  --color-terracota-300: #e3a888;
+  --color-chile-600: #a81f22;
+  --color-chile-500: #c1272d;
+  --color-chile-400: #d8433f;
+  --color-crema-50: #fbf5ea;
+  --color-crema-100: #f6ebd9;
+  --color-crema-200: #ecdcc2;
+  --color-crema-300: #d9c3a0;
+  --color-nopal-600: #3f6b3f;
+  --color-nopal-500: #4c7a4a;
+  --color-nopal-300: #9fbf9a;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-oscuro: #1da851;
+
+  --shadow-suave: 0 10px 30px -12px rgb(28 15 12 / 0.35);
+  --shadow-tarjeta: 0 18px 40px -18px rgb(28 15 12 / 0.45);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-crema-50 text-barro-900 font-texto antialiased;
+    font-optical-sizing: auto;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-titulo;
+    font-variation-settings: 'SOFT' 60, 'WONK' 0;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    @apply bg-chile-500 text-crema-50;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-chile-500;
+  }
+}
+
+@utility contenedor {
+  @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+}
+
+@utility linea-puntos {
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1.5px);
+  background-size: 7px 2px;
+  background-repeat: repeat-x;
+  background-position: 0 bottom;
+}
+
+/* Textura muy suave tipo barro sobre fondos oscuros. */
+@utility textura-barro {
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgb(255 255 255 / 0.05), transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgb(0 0 0 / 0.25), transparent 55%);
+}
